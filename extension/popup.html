@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LLM Firewall Settings</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 320px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 16px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid #1e293b;
+      padding-bottom: 12px;
+    }
+    .logo { font-size: 20px; }
+    .title { font-size: 14px; font-weight: 700; color: #38bdf8; }
+    .subtitle { font-size: 11px; color: #94a3b8; }
+    
+    .field { margin-bottom: 14px; }
+    label { display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; color: #cbd5e1; margin-bottom: 4px; }
+    input[type="text"] {
+      width: 100%;
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #fff;
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-family: monospace;
+    }
+    input[type="text"]:focus { outline: none; border-color: #38bdf8; }
+    
+    .status-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #1e293b;
+      padding: 10px 12px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+      font-size: 12px;
+    }
+    .status-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ef4444;
+      margin-right: 6px;
+    }
+    .status-dot.online { background: #22c55e; }
+
+    .btn {
+      display: block;
+      width: 100%;
+      background: #0284c7;
+      color: white;
+      border: none;
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 8px;
+    }
+    .btn:hover { background: #0369a1; }
+    .btn-secondary {
+      background: #334155;
+    }
+    .btn-secondary:hover { background: #475569; }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #94a3b8;
+      border-top: 1px solid #1e293b;
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+    .stat-value { font-weight: 700; color: #ef4444; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">🛡️</div>
+    <div>
+      <div class="title">LLM Lab Firewall</div>
+      <div class="subtitle">Method A: Browser Interceptor</div>
+    </div>
+  </div>
+
+  <div class="status-box">
+    <div style="display:flex;align-items:center;">
+      <span id="status-dot" class="status-dot"></span>
+      <span id="status-text">Disconnected</span>
+    </div>
+    <label style="margin:0;cursor:pointer;display:flex;align-items:center;gap:6px;">
+      <input type="checkbox" id="enable-toggle" checked>
+      <span style="font-size:11px;">Active</span>
+    </label>
+  </div>
+
+  <div class="field">
+    <label for="server-url">Laptop Firewall URL (IP:Port)</label>
+    <input type="text" id="server-url" value="http://localhost:3000" placeholder="http://192.168.1.50:3000">
+  </div>
+
+  <button id="test-btn" class="btn">Test Laptop Connection</button>
+  <button id="save-btn" class="btn btn-secondary">Save Configuration</button>
+
+  <div class="stat-row">
+    <span>Attacks Intercepted:</span>
+    <span id="blocked-count" class="stat-value">0</span>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "LLM Prompt Injection Firewall",
+  "description": "Reusable, provider-independent security middleware that inspects, scores, and blocks malicious prompt injections before reaching downstream LLMs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
